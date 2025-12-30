@@ -142,6 +142,230 @@ button{
 <div class="slider">
 
   <div class="slide active">
+<h1>🎉 Selamat Tahun Baru 🎉</h1>
+        <div class="scroll-hint">⬇️ baca perlahan aja yaa</div>
+    <p>
+Ucapan ini buat kamu, orang yang aku jadikan tujuan
+
+Terima kasih sudah hadir di tahun ini 🤍,Terima kasih untuk setiap tawa, kesabaran, dan pengertian yang kamu beri, bahkan di saat aku tidak selalu mudah untuk dipahami. Maaf kalau aku masih banyak kurangnya dalam ngetreat kamu. Jujur, tahun ini adalah tahun paling berkesan dalam hidupku, dan itu karena kamu ✨, Aku benar-benar bahagia dengan kehadiran kamu di hidupku tahun ini.🤍
+
+Di tahun yang 2026 yang akan kamu lalui, aku doakan semoga kamu selalu sehat, dilancarkan rezekinya, dimudahkan setiap perjalanan dan urusannya, dijauhkan dari segala masalah, selalu dikelilingi kebahagiaan, dan semoga senyummu tetap terjaga 🤲
+
+Pesanku buat kamu:
+jangan kebanyakan begadang cuma buat ngedrakor 😴, jangan ninggalin sholat 🤲, tetap semangat kuliahnya, dan jangan takut sama MTK 🤣, Kalau lagi sedih atau punya masalah jangan dipendam sendiri.Cerita ke orang-orang terdekat kamu 🤍, Aku tahu kamu anak pertama yang terbiasa mandiri dan kuat, tapi coba libatkan orang lain juga ya 🌷 Kamu nggak sendiri cantik.
+
+Semangat terus buat jagain si el 🤍, Kalau kamu keluar rumah, jangan lupa baca doa 🤲, dan selalu hati-hati di jalan 🚗, Selamat berproses ✨ Semoga suatu hari bisa jadi CEO beneran 🤣, Aku akan selalu ada mendukungmu walau hanya dalam bentuk doa.
+    </p>
+  </div>
+
+  <div class="slide">
+    <h1>🎉 Selamat Tahun Baru 🎉</h1>
+    <p>
+Dan satu hal yang harus kamu tahu, I love you not always but forever 🤍, Jadi fokuslah pada tujuanmu aku ga akan ke mana-mana.Kalau kamu butuh aku, hubungi saja, Aku tetap di sini dengan perasaan yang sama bahkan akan terus bertambah 🥹
+
+Tunggu aku yaaa, tunggu sampai bunga mawar di web yang kubuat untuk kamu itu mekar sepenuhnya 🌹, aku akan datang dengan niat yang serius, dan saat waktu itu tiba, aku nggak akan membiarkan kamu pergi dari hidupku.Semangat terus yaa noeul dan naeun nungguin kita😋🤣.
+
+Mungkin itu saja dulu, walaupun sebenarnya masih banyak yang ingin kusampaikan.aku titip salam buat orang-orang terdekatmu juga yaa.
+
+Untuk wanita baik dan cantikku:
+🎉Selamat tahun baru🎉
+      dan
+🤍I love you forever🤍
+    </p>
+  </div>
+
+  <div class="buttons">
+    <button onclick="prevSlide()">Prev</button>
+    <button onclick="nextSlide()">Next</button>
+  </div>
+
+</div>
+
+<!-- AUDIO -->
+<audio id="bgMusic" src="ada-untukmu-budi-doremi.mp3" loop></audio>
+
+<script>
+/* SLIDER */
+const slides=document.querySelectorAll('.slide');
+let index=0;
+function showSlide(i){
+  slides.forEach(s=>s.classList.remove('active'));
+  slides[i].classList.add('active');
+}
+function nextSlide(){
+  index=(index+1)%slides.length;
+  showSlide(index);
+}
+function prevSlide(){
+  index=(index-1+slides.length)%slides.length;
+  showSlide(index);
+}
+
+/* MUSIC */
+const music=document.getElementById("bgMusic");
+function startMusic(){
+  music.volume=0.7;
+  music.play().catch(()=>{});
+  document.removeEventListener("click",startMusic);
+}
+document.addEventListener("click",startMusic);
+
+/* FIREWORKS WOW */
+const c=document.getElementById("fx");
+const ctx=c.getContext("2d");
+c.width=innerWidth;
+c.height=innerHeight;
+
+let rockets=[],parts=[],texts=[];
+
+function heartPoint(t){
+  return {
+    x:16*Math.pow(Math.sin(t),3),
+    y:13*Math.cos(t)-5*Math.cos(2*t)-2*Math.cos(3*t)-Math.cos(4*t)
+  };
+}
+
+function explodeHeart(x,y,color){
+  for(let i=0;i<120;i++){
+    const t=Math.random()*Math.PI*2;
+    const p=heartPoint(t);
+    parts.push({
+      x,y,
+      vx:p.x*0.25,
+      vy:-p.y*0.25,
+      life:120,
+      color
+    });
+  }
+}
+
+function explodeNormal(x,y,color){
+  for(let i=0;i<120;i++){
+    parts.push({
+      x,y,
+      vx:(Math.random()-0.5)*8,
+      vy:(Math.random()-0.5)*8,
+      life:100,
+      color
+    });
+  }
+}
+
+function explodeText(x,y){
+  texts.push({x,y,life:120});
+}
+
+function launch(){
+  rockets.push({
+    x:Math.random()*c.width,
+    y:c.height,
+    vy:-9-Math.random()*3,
+    target:Math.random()*c.height/2,
+    color:`hsl(${Math.random()*360},100%,60%)`,
+    heart:Math.random()<0.4
+  });
+}
+
+setInterval(launch,280);
+
+function animate(){
+  ctx.clearRect(0,0,c.width,c.height);
+
+  rockets.forEach((r,i)=>{
+    ctx.fillStyle=r.color;
+    ctx.fillRect(r.x,r.y,3,12);
+    r.y+=r.vy;
+    if(r.y<=r.target){
+      r.heart ? explodeHeart(r.x,r.y,r.color) : explodeNormal(r.x,r.y,r.color);
+      if(Math.random()<0.3) explodeText(r.x,r.y);
+      rockets.splice(i,1);
+    }
+  });
+
+  parts.forEach((p,i)=>{
+    p.x+=p.vx;
+    p.y+=p.vy;
+    p.life--;
+    ctx.fillStyle=p.color;
+    ctx.fillRect(p.x,p.y,2,2);
+    if(p.life<=0) parts.splice(i,1);
+  });
+
+  texts.forEach((t,i)=>{
+    t.life--;
+    ctx.fillStyle=`rgba(255,255,255,${t.life/120})`;
+    ctx.font="20px Segoe UI";
+    ctx.textAlign="center";
+    ctx.fillText("Happy New Year ✨",t.x,t.y);
+    if(t.life<=0) texts.splice(i,1);
+  });
+
+  requestAnimationFrame(animate);
+}
+animate();
+</script>
+
+</body>
+</html>/* SCROLLBAR */
+.slide::-webkit-scrollbar{
+  width:4px;
+}
+.slide::-webkit-scrollbar-thumb{
+  background:rgba(255,255,255,.4);
+  border-radius:10px;
+}
+
+h1{
+  font-size:22px;
+  margin-bottom:15px;
+}
+
+p{
+  font-size:15px;
+  line-height:1.7;
+  white-space:pre-line;
+}
+
+.scroll-hint{
+  margin-top:15px;
+  font-size:12px;
+  opacity:.7;
+  animation:blink 1.5s infinite;
+}
+
+@keyframes blink{
+  0%,100%{opacity:.3}
+  50%{opacity:1}
+}
+
+/* BUTTONS */
+.buttons{
+  position:absolute;
+  bottom:-45px;
+  width:100%;
+  display:flex;
+  justify-content:space-between;
+}
+
+button{
+  background:white;
+  color:#c33764;
+  border:none;
+  padding:10px 18px;
+  border-radius:20px;
+  font-weight:bold;
+  cursor:pointer;
+}
+</style>
+</head>
+
+<body>
+
+<canvas id="fx"></canvas>
+
+<div class="slider">
+
+  <div class="slide active">
     <h1>🎉 Selamat Tahun Baru 🎉</h1>
         <div class="scroll-hint">⬇️ baca perlahan aja yaa</div>
     <p>
