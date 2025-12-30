@@ -13,7 +13,6 @@
   font-family:'Segoe UI',sans-serif;
 }
 
-/* BODY */
 body{
   background:radial-gradient(circle at top,#0b1d3a,#000814,#000);
   min-height:100vh;
@@ -69,58 +68,35 @@ canvas{
   padding:25px;
   text-align:center;
 
-  opacity:0;
-  transform:translateX(30px);
-  transition:.4s;
-
+  display:none;
   overflow-y:auto;
   -webkit-overflow-scrolling:touch;
 }
 
 .slide.active{
-  opacity:1;
-  transform:translateX(0);
+  display:block;
+  animation:slideIn .4s ease;
 }
 
-/* SCROLLBAR */
-.slide::-webkit-scrollbar{
-  width:4px;
-}
-.slide::-webkit-scrollbar-thumb{
-  background:rgba(255,255,255,.4);
-  border-radius:10px;
+@keyframes slideIn{
+  from{opacity:0; transform:translateX(30px)}
+  to{opacity:1; transform:translateX(0)}
 }
 
-h1{
-  font-size:22px;
-  margin-bottom:15px;
-}
-
-p{
-  font-size:15px;
-  line-height:1.7;
-  white-space:pre-line;
-}
+h1{font-size:22px;margin-bottom:15px}
+p{font-size:15px;line-height:1.7;white-space:pre-line}
 
 .scroll-hint{
-  margin-top:15px;
   font-size:12px;
   opacity:.7;
-  animation:blink 1.5s infinite;
+  margin-bottom:10px;
 }
 
-@keyframes blink{
-  0%,100%{opacity:.3}
-  50%{opacity:1}
-}
-
-/* BUTTONS */
-.buttons{
-  position:absolute;
-  bottom:-45px;
-  width:100%;
+/* TOMBOL DI DALAM KARTU */
+.nav{
   display:flex;
   justify-content:space-between;
+  margin-top:20px;
 }
 
 button{
@@ -141,9 +117,11 @@ button{
 
 <div class="slider">
 
+  <!-- SLIDE 1 -->
   <div class="slide active">
     <h1>🎉 Selamat Tahun Baru 🎉</h1>
-        <div class="scroll-hint">⬇️ baca perlahan aja yaa</div>
+    <div class="scroll-hint">⬇️ baca perlahan aja yaa</div>
+    <div class="scroll-hint">🔊 di scroll kebawah ya pesanku lumayan panjang soalnya</div>
     <p>
 Ucapan ini buat kamu, orang yang aku jadikan tujuan
 
@@ -155,12 +133,7 @@ Pesanku buat kamu:
 jangan kebanyakan begadang cuma buat ngedrakor 😴, jangan ninggalin sholat 🤲, tetap semangat kuliahnya, dan jangan takut sama MTK 🤣, Kalau lagi sedih atau punya masalah jangan dipendam sendiri.Cerita ke orang-orang terdekat kamu 🤍, Aku tahu kamu anak pertama yang terbiasa mandiri dan kuat, tapi coba libatkan orang lain juga ya 🌷 Kamu nggak sendiri cantik.
 
 Semangat terus buat jagain si el 🤍, Kalau kamu keluar rumah, jangan lupa baca doa 🤲, dan selalu hati-hati di jalan 🚗, Selamat berproses ✨ Semoga suatu hari bisa jadi CEO beneran 🤣, Aku akan selalu ada mendukungmu walau hanya dalam bentuk doa.
-    </p>
-  </div>
 
-  <div class="slide">
-    <h1>🎉 Selamat Tahun Baru 🎉</h1>
-    <p>
 Dan satu hal yang harus kamu tahu, I love you not always but forever 🤍, Jadi fokuslah pada tujuanmu aku ga akan ke mana-mana.Kalau kamu butuh aku, hubungi saja, Aku tetap di sini dengan perasaan yang sama bahkan akan terus bertambah 🥹
 
 Tunggu aku yaaa, tunggu sampai bunga mawar di web yang kubuat untuk kamu itu mekar sepenuhnya 🌹, aku akan datang dengan niat yang serius, dan saat waktu itu tiba, aku nggak akan membiarkan kamu pergi dari hidupku.Semangat terus yaa noeul dan naeun nungguin kita😋🤣.
@@ -171,23 +144,48 @@ Untuk wanita baik dan cantikku:
 🎉Selamat tahun baru🎉
       dan
 🤍I love you forever🤍
+
     </p>
+
+    <div class="nav">
+      <span></span>
+      <button onclick="nextSlide()">Next</button>
+    </div>
   </div>
 
-  <div class="buttons">
-    <button onclick="prevSlide()">Prev</button>
-    <button onclick="nextSlide()">Next</button>
+  <!-- SLIDE 2 -->
+  <div class="slide">
+    <h1>🎉 Selamat Tahun Baru 🎉</h1>
+    <p>
+Untuk teman-temanku semua,
+Terima kasih sudah menemani perjalanan tahun ini.Terima kasih atas kebersamaan, canda, dan dukungan yang tanpa sadar membuat banyak hal terasa lebih mudah dijalani.
+      
+Semoga di tahun 2026 kita semua diberikan kesehatan, kelancaran rezeki, dimudahkan urusan, dan dikelilingi hal-hal baik. Semoga setiap langkah yang kita ambil membawa kita lebih dekat pada tujuan masing-masing.Tetap jaga diri, jaga semangat, dan jangan lupa istirahat(kalau bisa😁,karena kita teknik🤣).
+      
+Kalau salah satu dari kita sedang capek atau butuh teman cerita, kita yang lain bakal selalu ada dan siap mendengarkan.
+      
+Terima kasih sudah menjadi bagian dari cerita tahun ini.Semoga ke depan kita tetap bisa saling mendoakan dan mendukung, apa pun jalan yang kita pilih.
+
+      🎉 Selamat Tahun Baru 🎉
+Semoga tahun ini lebih baik dari sebelumnya untuk kita semua.
+
+    </p>
+
+    <div class="nav">
+      <button onclick="prevSlide()">Prev</button>
+      <span></span>
+    </div>
   </div>
 
 </div>
 
-<!-- AUDIO -->
 <audio id="bgMusic" src="ada-untukmu-budi-doremi.mp3" loop></audio>
 
 <script>
 /* SLIDER */
 const slides=document.querySelectorAll('.slide');
 let index=0;
+
 function showSlide(i){
   slides.forEach(s=>s.classList.remove('active'));
   slides[i].classList.add('active');
@@ -203,14 +201,12 @@ function prevSlide(){
 
 /* MUSIC */
 const music=document.getElementById("bgMusic");
-function startMusic(){
+document.addEventListener("click",()=>{
   music.volume=0.7;
   music.play().catch(()=>{});
-  document.removeEventListener("click",startMusic);
-}
-document.addEventListener("click",startMusic);
+},{once:true});
 
-/* FIREWORKS WOW */
+/* FIREWORKS ASLI (TIDAK DIUBAH) */
 const c=document.getElementById("fx");
 const ctx=c.getContext("2d");
 c.width=innerWidth;
@@ -229,25 +225,13 @@ function explodeHeart(x,y,color){
   for(let i=0;i<120;i++){
     const t=Math.random()*Math.PI*2;
     const p=heartPoint(t);
-    parts.push({
-      x,y,
-      vx:p.x*0.25,
-      vy:-p.y*0.25,
-      life:120,
-      color
-    });
+    parts.push({x,y,vx:p.x*0.25,vy:-p.y*0.25,life:120,color});
   }
 }
 
 function explodeNormal(x,y,color){
   for(let i=0;i<120;i++){
-    parts.push({
-      x,y,
-      vx:(Math.random()-0.5)*8,
-      vy:(Math.random()-0.5)*8,
-      life:100,
-      color
-    });
+    parts.push({x,y,vx:(Math.random()-0.5)*8,vy:(Math.random()-0.5)*8,life:100,color});
   }
 }
 
@@ -265,7 +249,6 @@ function launch(){
     heart:Math.random()<0.4
   });
 }
-
 setInterval(launch,280);
 
 function animate(){
