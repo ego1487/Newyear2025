@@ -1,293 +1,267 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-<meta charset="UTF-8">
-<title>Ucapan Tahun Baru</title>
-<style>
-*{
-  margin:0;
-  padding:0;
-  box-sizing:border-box;
-  font-family:'Segoe UI',sans-serif;
-}
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Happy New Year ✨</title>
 
-body{
-  background:linear-gradient(135deg,#1d2671,#c33764);
-  height:100vh;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  color:white;
-  overflow:hidden;
-}
+  <style>
+    *{
+      margin:0;
+      padding:0;
+      box-sizing:border-box;
+      font-family:'Segoe UI',sans-serif;
+    }
 
-/* Canvas fireworks */
-#fireworks{
-  position:fixed;
-  top:0;
-  left:0;
-  width:100%;
-  height:100%;
-  pointer-events:none;
-  z-index:0;
-}
+    body{
+      background:linear-gradient(135deg,#1d2671,#c33764);
+      height:100vh;
+      display:flex;
+      justify-content:center;
+      align-items:center;
+      color:white;
+      overflow:hidden;
+    }
 
-/* Slider */
-.slider{
-  width:90%;
-  max-width:420px;
-  height:70vh;
-  position:relative;
-  z-index:1;
-}
+    canvas{
+      position:fixed;
+      top:0;
+      left:0;
+      width:100%;
+      height:100%;
+      z-index:0;
+    }
 
-/* Slide */
-.slide{
-  position:absolute;
-  width:100%;
-  height:100%;
-  background:rgba(255,255,255,0.15);
-  backdrop-filter:blur(10px);
-  border-radius:20px;
-  padding:25px;
-  text-align:center;
-  opacity:0;
-  transform:translateX(40px);
-  transition:0.5s ease;
-  overflow-y:auto;
-}
+    .slider{
+      width:90%;
+      max-width:420px;
+      height:75vh;
+      position:relative;
+      z-index:2;
+    }
 
-.slide.active{
-  opacity:1;
-  transform:translateX(0);
-}
+    .slide{
+      position:absolute;
+      width:100%;
+      height:100%;
+      background:rgba(255,255,255,.15);
+      backdrop-filter:blur(10px);
+      border-radius:20px;
+      padding:25px;
+      text-align:center;
+      opacity:0;
+      transform:translateX(40px);
+      transition:.5s;
+      overflow-y:auto;
+    }
 
-h1{
-  font-size:22px;
-  margin-bottom:15px;
-}
+    .slide.active{
+      opacity:1;
+      transform:translateX(0);
+    }
 
-p{
-  font-size:15px;
-  line-height:1.7;
-  white-space:pre-line;
-}
+    h1{
+      font-size:22px;
+      margin-bottom:15px;
+    }
 
-/* Buttons */
-.buttons{
-  position:absolute;
-  bottom:-55px;
-  width:100%;
-  display:flex;
-  justify-content:space-between;
-}
+    p{
+      font-size:15px;
+      line-height:1.7;
+      white-space:pre-line;
+    }
 
-button{
-  background:white;
-  color:#c33764;
-  border:none;
-  padding:10px 18px;
-  border-radius:20px;
-  cursor:pointer;
-  font-weight:bold;
-}
+    .scroll-hint{
+      margin-top:15px;
+      font-size:12px;
+      opacity:.7;
+      animation:blink 1.5s infinite;
+    }
 
-/* Scroll hint */
-.scroll-hint{
-  margin-top:15px;
-  font-size:12px;
-  opacity:0.85;
-}
+    @keyframes blink{
+      0%,100%{opacity:.2}
+      50%{opacity:1}
+    }
 
-.scroll-indicator{
-  font-size:18px;
-  margin-top:5px;
-  animation:bounce 1.5s infinite;
-}
+    .buttons{
+      position:absolute;
+      bottom:-55px;
+      width:100%;
+      display:flex;
+      justify-content:space-between;
+    }
 
-@keyframes bounce{
-  0%,100%{transform:translateY(0)}
-  50%{transform:translateY(6px)}
-}
-
-/* Music button */
-.music-btn{
-  position:fixed;
-  top:15px;
-  right:15px;
-  z-index:2;
-  background:rgba(255,255,255,0.9);
-  color:#c33764;
-  border:none;
-  padding:10px 14px;
-  border-radius:20px;
-  font-size:13px;
-  cursor:pointer;
-  font-weight:bold;
-}
-</style>
+    button{
+      background:white;
+      color:#c33764;
+      border:none;
+      padding:10px 18px;
+      border-radius:20px;
+      font-weight:bold;
+      cursor:pointer;
+    }
+  </style>
 </head>
 <body>
-
-<!-- Musik -->
-<audio id="bgMusic" loop>
-  <!-- GANTI src DENGAN FILE MP3 "ADA UNTUKMU" -->
-  <source src="ada-untukmu.mp3" type="audio/mpeg">
-</audio>
-
-<button class="music-btn" onclick="toggleMusic()">🎵 Putar Musik</button>
 
 <canvas id="fireworks"></canvas>
 
 <div class="slider">
 
-<div class="slide active">
-<h1>🎉 Selamat Tahun Baru 🎉</h1>
-<p>
+  <!-- Slide 1 -->
+  <div class="slide active">
+    <h1>🎉 Selamat Tahun Baru 🎉</h1>
+    <p>
 Untuk teman-temanku,
 
 Terima kasih sudah menemani cerita di tahun ini.
-Semoga tahun baru penuh tawa dan kelulusan 🤣
-</p>
-</div>
+Terima kasih sudah sabar ngadepin aku yang suka iseng 😄
 
-<div class="slide">
-<h1>❤️ Untuk Kamu (Tak Perlu Kusebut Namanya) ❤️</h1>
-<p>
+Semoga tahun baru membawa lebih banyak tawa,
+mimpi kalian tercapai,
+tetap bareng terus,
+dan semoga cepat lulus 🤣
+    </p>
+  </div>
+
+  <!-- Slide 2 -->
+  <div class="slide">
+    <h1>❤️ Untuk Kamu (Tak Perlu Kusebut Namanya) ❤️</h1>
+    <p>
 Selamat Tahun Baru ✨
 
 Baca perlahan ya,
-dan jangan lupa scroll 🤍
+dan jangan lupa discroll 🤍
+
+Terima kasih sudah hadir di tahun ini.
+Terima kasih untuk setiap tawa,
+kesabaran, dan pengertianmu.
+
+Maaf kalau aku masih banyak kurangnya.
+
+Tahun ini adalah tahun paling berkesan,
+dan itu karena kamu ✨
+
+Aku doakan kamu selalu sehat,
+dilancarkan rezekinya,
+dan dikelilingi kebahagiaan 🤲
+
+Jangan kebanyakan begadang 😴
+Jangan ninggalin sholat 🤍
+Tetap semangat kuliahnya
+dan jangan takut sama MTK 🤣
+
+Kalau sedih, jangan dipendam sendiri.
+Kamu nggak sendiri 🌷
 
 Aku mungkin nggak selalu ada secara fisik,
-tapi aku selalu ada dalam doa 🤲
+tapi aku selalu ada dalam doa.
 
-I love you, not always, but forever 🤍
-</p>
+I love you, not always,
+but forever 🤍
 
-<small class="scroll-hint">⬇️ scroll ke bawah ya</small>
-<div class="scroll-indicator">⬇️</div>
+Tunggu aku ya.
+Sampai mawar itu mekar sempurna 🌹
+
+Selamat Tahun Baru 🤍
+I love you forever.
+    </p>
+    <div class="scroll-hint">⬇️ Scroll perlahan ya</div>
+  </div>
+
+  <div class="buttons">
+    <button onclick="prevSlide()">Prev</button>
+    <button onclick="nextSlide()">Next</button>
+  </div>
 </div>
 
-<div class="buttons">
-<button onclick="prevSlide()">Prev</button>
-<button onclick="nextSlide()">Next</button>
-</div>
-
-</div>
+<!-- AUDIO -->
+<audio id="bgMusic" src="ada-untukmu.mp3" loop></audio>
 
 <script>
-/* MUSIC */
-const music=document.getElementById("bgMusic");
-let playing=false;
-function toggleMusic(){
-  if(!playing){
-    music.play();
-    playing=true;
-  }else{
-    music.pause();
-    playing=false;
+  /* ===== SLIDER ===== */
+  const slides=document.querySelectorAll('.slide');
+  let index=0;
+  function showSlide(i){
+    slides.forEach(s=>s.classList.remove('active'));
+    slides[i].classList.add('active');
   }
-}
-
-/* SLIDER */
-const slides=document.querySelectorAll('.slide');
-let index=0;
-function showSlide(i){
-  slides.forEach(s=>s.classList.remove('active'));
-  slides[i].classList.add('active');
-}
-function nextSlide(){index=(index+1)%slides.length;showSlide(index);}
-function prevSlide(){index=(index-1+slides.length)%slides.length;showSlide(index);}
-
-/* FIREWORKS RAMAI */
-const canvas=document.getElementById("fireworks");
-const ctx=canvas.getContext("2d");
-
-function resize(){
-  canvas.width=window.innerWidth;
-  canvas.height=window.innerHeight;
-}
-resize();
-window.addEventListener("resize",resize);
-
-class Rocket{
-  constructor(){
-    this.x=Math.random()*canvas.width;
-    this.y=canvas.height;
-    this.vy=Math.random()*-10-10;
-    this.color=`hsl(${Math.random()*360},100%,60%)`;
-    this.exploded=false;
+  function nextSlide(){
+    index=(index+1)%slides.length;
+    showSlide(index);
   }
-  update(){
-    this.y+=this.vy;
-    this.vy+=0.08;
-    if(this.vy>=0&&!this.exploded){
-      this.explode();
-      this.exploded=true;
-    }
+  function prevSlide(){
+    index=(index-1+slides.length)%slides.length;
+    showSlide(index);
   }
-  draw(){
-    ctx.beginPath();
-    ctx.arc(this.x,this.y,2.5,0,Math.PI*2);
-    ctx.fillStyle=this.color;
-    ctx.fill();
+
+  /* ===== AUTO MUSIC ON INTERACTION ===== */
+  const music=document.getElementById("bgMusic");
+  function startMusic(){
+    music.volume=0.7;
+    music.play().catch(()=>{});
+    document.removeEventListener("click",startMusic);
+    document.removeEventListener("scroll",startMusic);
   }
-  explode(){
+  document.addEventListener("click",startMusic);
+  document.addEventListener("scroll",startMusic);
+
+  /* ===== FIREWORKS ===== */
+  const canvas=document.getElementById("fireworks");
+  const ctx=canvas.getContext("2d");
+  canvas.width=innerWidth;
+  canvas.height=innerHeight;
+
+  let particles=[];
+
+  function launchFirework(){
+    const x=Math.random()*canvas.width;
+    const y=canvas.height;
+    const targetY=Math.random()*canvas.height/2;
+    const color=`hsl(${Math.random()*360},100%,60%)`;
+
+    const rocket={
+      x,y,vy:-8,color,targetY
+    };
+
+    const interval=setInterval(()=>{
+      ctx.fillStyle=rocket.color;
+      ctx.fillRect(rocket.x,rocket.y,3,10);
+      rocket.y+=rocket.vy;
+      if(rocket.y<=rocket.targetY){
+        clearInterval(interval);
+        explode(rocket.x,rocket.y,rocket.color);
+      }
+    },16);
+  }
+
+  function explode(x,y,color){
     for(let i=0;i<80;i++){
-      particles.push(new Particle(this.x,this.y,this.color));
+      particles.push({
+        x,y,
+        vx:(Math.random()-0.5)*6,
+        vy:(Math.random()-0.5)*6,
+        life:100,
+        color
+      });
     }
   }
-}
 
-class Particle{
-  constructor(x,y,color){
-    this.x=x;
-    this.y=y;
-    this.vx=(Math.random()-0.5)*8;
-    this.vy=(Math.random()-0.5)*8;
-    this.life=100;
-    this.color=color;
-  }
-  update(){
-    this.x+=this.vx;
-    this.y+=this.vy;
-    this.vy+=0.08;
-    this.life--;
-  }
-  draw(){
-    ctx.beginPath();
-    ctx.arc(this.x,this.y,2,0,Math.PI*2);
-    ctx.fillStyle=this.color;
-    ctx.fill();
-  }
-}
-
-let rockets=[];
-let particles=[];
-
-function animate(){
-  ctx.clearRect(0,0,canvas.width,canvas.height);
-
-  if(Math.random()<0.12){
-    rockets.push(new Rocket());
+  function animate(){
+    ctx.clearRect(0,0,canvas.width,canvas.height);
+    particles.forEach((p,i)=>{
+      p.x+=p.vx;
+      p.y+=p.vy;
+      p.life--;
+      ctx.fillStyle=p.color;
+      ctx.fillRect(p.x,p.y,2,2);
+      if(p.life<=0)particles.splice(i,1);
+    });
+    requestAnimationFrame(animate);
   }
 
-  rockets.forEach((r,i)=>{
-    r.update();
-    r.draw();
-    if(r.exploded) rockets.splice(i,1);
-  });
-
-  particles.forEach((p,i)=>{
-    p.update();
-    p.draw();
-    if(p.life<=0) particles.splice(i,1);
-  });
-
-  requestAnimationFrame(animate);
-}
-animate();
+  setInterval(launchFirework,400);
+  animate();
 </script>
 
 </body>
