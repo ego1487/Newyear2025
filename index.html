@@ -1,454 +1,224 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Happy New Year ✨</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Happy New Year ✨</title>
 
-  <style>
-    *{
-      margin:0;
-      padding:0;
-      box-sizing:border-box;
-      font-family:'Segoe UI',sans-serif;
-    }
+<style>
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+  font-family:'Segoe UI',sans-serif;
+}
 
-    body{
-      background:linear-gradient(135deg,#1d2671,#c33764);
-      height:100vh;
-      display:flex;
-      justify-content:center;
-      align-items:center;
-      color:white;
-      overflow:hidden;
-    }
+body{
+  background:linear-gradient(135deg,#1d2671,#c33764);
+  min-height:100vh;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  color:white;
+  overflow:hidden;
+}
 
-    canvas{
-      position:fixed;
-      top:0;
-      left:0;
-      width:100%;
-      height:100%;
-      z-index:0;
-    }
+canvas{
+  position:fixed;
+  inset:0;
+  z-index:0;
+}
 
-    .slider{
-      width:90%;
-      max-width:420px;
-      height:75vh;
-      position:relative;
-      z-index:2;
-    }
+.slider{
+  width:90%;
+  max-width:420px;
+  height:75vh;
+  position:relative;
+  z-index:2;
+}
 
-    .slide{
-      position:absolute;
-      width:100%;
-      height:100%;
-      background:rgba(255,255,255,.15);
-      backdrop-filter:blur(10px);
-      border-radius:20px;
-      padding:25px;
-      text-align:center;
-      opacity:0;
-      transform:translateX(40px);
-      transition:.5s;
-      overflow-y:auto;
-    }
+.slide{
+  position:absolute;
+  inset:0;
+  background:rgba(255,255,255,.15);
+  backdrop-filter:blur(10px);
+  border-radius:20px;
+  padding:25px;
+  text-align:center;
+  opacity:0;
+  transform:translateX(30px);
+  transition:.4s;
+  overflow-y:auto;
+}
 
-    .slide.active{
-      opacity:1;
-      transform:translateX(0);
-    }
+.slide.active{
+  opacity:1;
+  transform:translateX(0);
+}
 
-    h1{
-      font-size:22px;
-      margin-bottom:15px;
-    }
+h1{
+  font-size:22px;
+  margin-bottom:15px;
+}
 
-    p{
-      font-size:15px;
-      line-height:1.7;
-      white-space:pre-line;
-    }
+p{
+  font-size:15px;
+  line-height:1.7;
+  white-space:pre-line;
+}
 
-    .scroll-hint{
-      margin-top:15px;
-      font-size:12px;
-      opacity:.7;
-      animation:blink 1.5s infinite;
-    }
+.scroll-hint{
+  margin-top:15px;
+  font-size:12px;
+  opacity:.7;
+  animation:blink 1.5s infinite;
+}
 
-    @keyframes blink{
-      0%,100%{opacity:.2}
-      50%{opacity:1}
-    }
+@keyframes blink{
+  0%,100%{opacity:.3}
+  50%{opacity:1}
+}
 
-    .buttons{
-      position:absolute;
-      bottom:-55px;
-      width:100%;
-      display:flex;
-      justify-content:space-between;
-    }
+.buttons{
+  position:absolute;
+  bottom:-45px;
+  width:100%;
+  display:flex;
+  justify-content:space-between;
+}
 
-    button{
-      background:white;
-      color:#c33764;
-      border:none;
-      padding:10px 18px;
-      border-radius:20px;
-      font-weight:bold;
-      cursor:pointer;
-    }
-  </style>
+button{
+  background:white;
+  color:#c33764;
+  border:none;
+  padding:10px 18px;
+  border-radius:20px;
+  font-weight:bold;
+  cursor:pointer;
+}
+</style>
 </head>
+
 <body>
 
 <canvas id="fireworks"></canvas>
 
 <div class="slider">
 
-  <!-- SLIDE 1 -->
-  <div class="slide active">
-    <h1>🎉 Selamat Tahun Baru 🎉</h1>
-    <p>
+<div class="slide active">
+<h1>🎉 Selamat Tahun Baru 🎉</h1>
+<p>
 Untuk teman-temanku,
 
 Terima kasih sudah menemani cerita di tahun ini.
-Terima kasih sudah sabar ngadepin aku yang suka iseng 😄
+Terima kasih sudah sabar ngadepin aku 😄
 
-Semoga tahun baru membawa lebih banyak tawa,
-mimpi kalian tercapai,
-tetap bareng terus,
-dan semoga cepat lulus 🤣
-    </p>
-  </div>
+Semoga tahun baru membawa tawa,
+mimpi tercapai,
+tetap bareng,
+dan cepat lulus 🤣
+</p>
+</div>
 
-  <!-- SLIDE 2 -->
-  <div class="slide">
-    <h1>❤️ Untuk Kamu (Tak Perlu Kusebut Namanya) ❤️</h1>
-    <p>
+<div class="slide">
+<h1>❤️ Untuk Kamu ❤️</h1>
+<p>
 Selamat Tahun Baru ✨
 
-Baca perlahan ya,
-dan jangan lupa discroll 🤍
+Terima kasih sudah hadir.
+Terima kasih untuk sabarmu.
 
-Terima kasih sudah hadir di tahun ini.
-Terima kasih untuk setiap tawa,
-kesabaran, dan pengertianmu.
+Maaf kalau aku masih kurang.
 
-Maaf kalau aku masih banyak kurangnya.
+Tahun ini paling berkesan,
+karena kamu ✨
 
-Tahun ini adalah tahun paling berkesan,
-dan itu karena kamu ✨
+Jaga kesehatan,
+jangan begadang 😴
+jangan ninggalin sholat 🤍
 
-Aku doakan kamu selalu sehat,
-dilancarkan rezekinya,
-dan dikelilingi kebahagiaan 🤲
-
-Jangan kebanyakan begadang 😴
-Jangan ninggalin sholat 🤍
-Tetap semangat kuliahnya
-dan jangan takut sama MTK 🤣
-
-Kalau sedih, jangan dipendam sendiri.
-Kamu nggak sendiri 🌷
-
-Aku mungkin nggak selalu ada secara fisik,
-tapi aku selalu ada dalam doa.
+Aku selalu ada dalam doa.
 
 I love you, not always,
 but forever 🤍
-
-Tunggu aku ya.
-Sampai mawar itu mekar sempurna 🌹
-
-Selamat Tahun Baru 🤍
-I love you forever.
-    </p>
-    <div class="scroll-hint">⬇️ Scroll perlahan ya</div>
-  </div>
-
-  <div class="buttons">
-    <button onclick="prevSlide()">Prev</button>
-    <button onclick="nextSlide()">Next</button>
-  </div>
+</p>
+<div class="scroll-hint">⬇️ Scroll perlahan</div>
 </div>
 
-<!-- 🎵 AUDIO -->
+<div class="buttons">
+<button onclick="prevSlide()">Prev</button>
+<button onclick="nextSlide()">Next</button>
+</div>
+
+</div>
+
 <audio id="bgMusic" src="ada-untukmu-budi-doremi.mp3" loop></audio>
 
 <script>
-  /* ===== SLIDER ===== */
-  const slides=document.querySelectorAll('.slide');
-  let index=0;
+const slides=document.querySelectorAll('.slide');
+let index=0;
 
-  function showSlide(i){
-    slides.forEach(s=>s.classList.remove('active'));
-    slides[i].classList.add('active');
-  }
+function showSlide(i){
+slides.forEach(s=>s.classList.remove('active'));
+slides[i].classList.add('active');
+}
 
-  function nextSlide(){
-    index=(index+1)%slides.length;
-    showSlide(index);
-  }
+function nextSlide(){
+index=(index+1)%slides.length;
+showSlide(index);
+}
 
-  function prevSlide(){
-    index=(index-1+slides.length)%slides.length;
-    showSlide(index);
-  }
+function prevSlide(){
+index=(index-1+slides.length)%slides.length;
+showSlide(index);
+}
 
-  /* ===== AUTO MUSIC (ON FIRST INTERACTION) ===== */
-  const music=document.getElementById("bgMusic");
+/* music */
+const music=document.getElementById("bgMusic");
+function startMusic(){
+music.volume=0.7;
+music.play().catch(()=>{});
+document.removeEventListener("click",startMusic);
+}
+document.addEventListener("click",startMusic);
 
-  function startMusic(){
-    music.volume=0.7;
-    music.play().catch(()=>{});
-    document.removeEventListener("click",startMusic);
-    document.removeEventListener("scroll",startMusic);
-  }
+/* fireworks */
+const canvas=document.getElementById("fireworks");
+const ctx=canvas.getContext("2d");
+canvas.width=innerWidth;
+canvas.height=innerHeight;
 
-  document.addEventListener("click",startMusic);
-  document.addEventListener("scroll",startMusic);
+let particles=[];
 
-  /* ===== FIREWORKS ===== */
-  const canvas=document.getElementById("fireworks");
-  const ctx=canvas.getContext("2d");
-  canvas.width=innerWidth;
-  canvas.height=innerHeight;
+function explode(x,y){
+for(let i=0;i<60;i++){
+particles.push({
+x,y,
+vx:(Math.random()-0.5)*6,
+vy:(Math.random()-0.5)*6,
+life:80,
+color:`hsl(${Math.random()*360},100%,60%)`
+});
+}
+}
 
-  let particles=[];
+setInterval(()=>{
+explode(Math.random()*canvas.width,Math.random()*canvas.height/2);
+},500);
 
-  function launchFirework(){
-    const x=Math.random()*canvas.width;
-    const y=canvas.height;
-    const targetY=Math.random()*canvas.height/2;
-    const color=`hsl(${Math.random()*360},100%,60%)`;
-
-    const rocket={x,y,vy:-8,color,targetY};
-
-    const interval=setInterval(()=>{
-      ctx.fillStyle=rocket.color;
-      ctx.fillRect(rocket.x,rocket.y,3,10);
-      rocket.y+=rocket.vy;
-
-      if(rocket.y<=rocket.targetY){
-        clearInterval(interval);
-        explode(rocket.x,rocket.y,rocket.color);
-      }
-    },16);
-  }
-
-  function explode(x,y,color){
-    for(let i=0;i<90;i++){
-      particles.push({
-        x,y,
-        vx:(Math.random()-0.5)*6,
-        vy:(Math.random()-0.5)*6,
-        life:100,
-        color
-      });
-    }
-  }
-
-  function animate(){
-    ctx.clearRect(0,0,canvas.width,canvas.height);
-    particles.forEach((p,i)=>{
-      p.x+=p.vx;
-      p.y+=p.vy;
-      p.life--;
-      ctx.fillStyle=p.color;
-      ctx.fillRect(p.x,p.y,2,2);
-      if(p.life<=0)particles.splice(i,1);
-    });
-    requestAnimationFrame(animate);
-  }
-
-  setInterval(launchFirework,400);
-  animate();
-</script>
-
-</body>
-</html>
-    .buttons{
-      position:absolute;
-      bottom:-55px;
-      width:100%;
-      display:flex;
-      justify-content:space-between;
-    }
-
-    button{
-      background:white;
-      color:#c33764;
-      border:none;
-      padding:10px 18px;
-      border-radius:20px;
-      font-weight:bold;
-      cursor:pointer;
-    }
-  </style>
-</head>
-<body>
-
-<canvas id="fireworks"></canvas>
-
-<div class="slider">
-
-  <!-- Slide 1 -->
-  <div class="slide active">
-    <h1>🎉 Selamat Tahun Baru 🎉</h1>
-    <p>
-Untuk teman-temanku,
-
-Terima kasih sudah menemani cerita di tahun ini.
-Terima kasih sudah sabar ngadepin aku yang suka iseng 😄
-
-Semoga tahun baru membawa lebih banyak tawa,
-mimpi kalian tercapai,
-tetap bareng terus,
-dan semoga cepat lulus 🤣
-    </p>
-  </div>
-
-  <!-- Slide 2 -->
-  <div class="slide">
-    <h1>❤️ Untuk Kamu (Tak Perlu Kusebut Namanya) ❤️</h1>
-    <p>
-Selamat Tahun Baru ✨
-
-Baca perlahan ya,
-dan jangan lupa discroll 🤍
-
-Terima kasih sudah hadir di tahun ini.
-Terima kasih untuk setiap tawa,
-kesabaran, dan pengertianmu.
-
-Maaf kalau aku masih banyak kurangnya.
-
-Tahun ini adalah tahun paling berkesan,
-dan itu karena kamu ✨
-
-Aku doakan kamu selalu sehat,
-dilancarkan rezekinya,
-dan dikelilingi kebahagiaan 🤲
-
-Jangan kebanyakan begadang 😴
-Jangan ninggalin sholat 🤍
-Tetap semangat kuliahnya
-dan jangan takut sama MTK 🤣
-
-Kalau sedih, jangan dipendam sendiri.
-Kamu nggak sendiri 🌷
-
-Aku mungkin nggak selalu ada secara fisik,
-tapi aku selalu ada dalam doa.
-
-I love you, not always,
-but forever 🤍
-
-Tunggu aku ya.
-Sampai mawar itu mekar sempurna 🌹
-
-Selamat Tahun Baru 🤍
-I love you forever.
-    </p>
-    <div class="scroll-hint">⬇️ Scroll perlahan ya</div>
-  </div>
-
-  <div class="buttons">
-    <button onclick="prevSlide()">Prev</button>
-    <button onclick="nextSlide()">Next</button>
-  </div>
-</div>
-
-<!-- AUDIO -->
-<audio id="bgMusic" src="ada-untukmu.mp3" loop></audio>
-
-<script>
-  /* ===== SLIDER ===== */
-  const slides=document.querySelectorAll('.slide');
-  let index=0;
-  function showSlide(i){
-    slides.forEach(s=>s.classList.remove('active'));
-    slides[i].classList.add('active');
-  }
-  function nextSlide(){
-    index=(index+1)%slides.length;
-    showSlide(index);
-  }
-  function prevSlide(){
-    index=(index-1+slides.length)%slides.length;
-    showSlide(index);
-  }
-
-  /* ===== AUTO MUSIC ON INTERACTION ===== */
-  const music=document.getElementById("bgMusic");
-  function startMusic(){
-    music.volume=0.7;
-    music.play().catch(()=>{});
-    document.removeEventListener("click",startMusic);
-    document.removeEventListener("scroll",startMusic);
-  }
-  document.addEventListener("click",startMusic);
-  document.addEventListener("scroll",startMusic);
-
-  /* ===== FIREWORKS ===== */
-  const canvas=document.getElementById("fireworks");
-  const ctx=canvas.getContext("2d");
-  canvas.width=innerWidth;
-  canvas.height=innerHeight;
-
-  let particles=[];
-
-  function launchFirework(){
-    const x=Math.random()*canvas.width;
-    const y=canvas.height;
-    const targetY=Math.random()*canvas.height/2;
-    const color=`hsl(${Math.random()*360},100%,60%)`;
-
-    const rocket={
-      x,y,vy:-8,color,targetY
-    };
-
-    const interval=setInterval(()=>{
-      ctx.fillStyle=rocket.color;
-      ctx.fillRect(rocket.x,rocket.y,3,10);
-      rocket.y+=rocket.vy;
-      if(rocket.y<=rocket.targetY){
-        clearInterval(interval);
-        explode(rocket.x,rocket.y,rocket.color);
-      }
-    },16);
-  }
-
-  function explode(x,y,color){
-    for(let i=0;i<80;i++){
-      particles.push({
-        x,y,
-        vx:(Math.random()-0.5)*6,
-        vy:(Math.random()-0.5)*6,
-        life:100,
-        color
-      });
-    }
-  }
-
-  function animate(){
-    ctx.clearRect(0,0,canvas.width,canvas.height);
-    particles.forEach((p,i)=>{
-      p.x+=p.vx;
-      p.y+=p.vy;
-      p.life--;
-      ctx.fillStyle=p.color;
-      ctx.fillRect(p.x,p.y,2,2);
-      if(p.life<=0)particles.splice(i,1);
-    });
-    requestAnimationFrame(animate);
-  }
-
-  setInterval(launchFirework,400);
-  animate();
+function animate(){
+ctx.clearRect(0,0,canvas.width,canvas.height);
+particles.forEach((p,i)=>{
+p.x+=p.vx;
+p.y+=p.vy;
+p.life--;
+ctx.fillStyle=p.color;
+ctx.fillRect(p.x,p.y,2,2);
+if(p.life<=0)particles.splice(i,1);
+});
+requestAnimationFrame(animate);
+}
+animate();
 </script>
 
 </body>
